@@ -1,0 +1,10 @@
+
+.g_bar {
+	display: inline-block;
+	position: relative;
+	height: 30px;
+	border: 1px solid #EDF8FE;
+	border-left: 0;
+	background: #EDF8FE;
+	margin-top:5px;
+}
