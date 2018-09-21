@@ -1,0 +1,30 @@
+/*MV Í¼Æ¬*/
+.mvList2{}
+.mvList2{width:220px; height:150px; position:relative; left:0; top:0; 
+		background:#0eaf52; float:left; margin:0 13px 13px 0;}
+.mvList2 b{position:absolute; right:10px; top:0; z-index:10;
+		width:32px; height:21px; display:block; background:url(../images/today.jpg) no-repeat;}
+.mvList2 a strong{position:absolute; left:10px; color:#fff; font-size:12px;
+		 font-weight:normal; transition:.5s;}
+.mvList2 a strong:nth-of-type(1){bottom:20px;}
+.mvList2 a strong:nth-of-type(2){bottom:4px; color:#0eaf52;}
+.mvList2 a span{width:200px; height:140px; position:absolute; left:-2px; top:-2px; 
+		display:block; text-align:left; padding:5px 10px; border:2px solid #fff;
+		box-shadow:0 0 1px #ddd; transition:.5s;}
+.mvList2 a span font{height:20px; color:#fff; display:block; 
+		opacity:0; font-size:12px; transition:.5s;margin-top:20px;}
+.mvList2 a span font:nth-of-type(1){font-weight:bold;}
+.mvList2 a span font:nth-of-type(2){height:64px; font-size:10px;}
+.mvList2 a span font:nth-of-type(2) i{width:49px; height:49px; display:block;
+		margin:15px auto; background:url(../images/mvPlayIcon.png) no-repeat; transition:1s;}
+.mvList2 a span font:nth-of-type(3) i{width:14px; height:14px;
+		display:inline-block; vertical-align:-3px; margin-right:4px;
+		background:url(../images/icos.png) no-repeat -184px -53px;}
+.mvList2 a span font:nth-of-type(3) em{float:right;}
+.mvList2 a:hover strong{opacity:0;}
+.mvList2 a:hover span{background:rgba(0,0,0,.5); box-shadow:0 0 5px #112233;}
+.mvList2 a:hover font{opacity:1;}
+.mvList2 a:hover span font:nth-of-type(2) i{-moz-transform:rotate(720deg); 
+		-webkit-transform:rotate(720deg);
+		-webkit-transform-origin:center center 0;}
+/*mvÊ×·¢ ½áÊø*/
