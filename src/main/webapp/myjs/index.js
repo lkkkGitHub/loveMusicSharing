@@ -202,7 +202,7 @@ function childMenu(tbMenu) {
 			str += "</div>";
 			str += "	<div class='bd'>";
 			str += "<ul class='song-list'>";
-			str += topRank(tbMenu[i].mid);
+			str += topRank(tbMenu[i].mid,tbMenu[i].ename);
 			str += "</ul>";
 			str += "</div></div>";
 		}
@@ -211,14 +211,14 @@ function childMenu(tbMenu) {
 
 }
 
-function topRank(mid) {
+function topRank(mid,type) {
 	var str = "";
 	$
 			.ajax({
 				type : 'get',
 				data : {
 					mid : mid,
-					menuid : menuid
+					type: type
 				},
 				url : '/musicClassify/rank',
 				async : false,
@@ -232,7 +232,7 @@ function topRank(mid) {
 							str +=" <strong class='num'></strong>";
 							str +=	"</div>";
 							str +=	"<div class='song artist-rank'>";
-							str +=	"	<a title='"+data[i].sname+"' href='playMusic.do?id=79&type=1' target='_new'>"+data[i].sname+"</a>"
+							str +=	"	<a title='"+data[i].sname+"' href='/searchBySname?sname="+encodeURI(encodeURI(data[i].sname))+"' >"+data[i].sname+"</a>"
 						}else{
 							str += "</div><div class='song-info'><div class='info'><div class='song'>";
 							str += "<a  title='"+ data[i].title+ "' style='text-decoration:none;' href='play?id="+data[i].musicid+"' target='_new'>"+data[i].title+"</a><span class='artist'>";

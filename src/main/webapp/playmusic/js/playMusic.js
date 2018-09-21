@@ -158,14 +158,14 @@ function userLogin(username) {
 		        		str+="<div class=\"col colsn\">"+music.mname+"</div>";
 		        		str+="<div class=\"col colcn\">"+music.sname+"</div>";
 		        		str+="<div class=\"col\">待添加</div></div>";
-		        		str+="<div class=\"control\" hp=\"123\">";
+		        		str+="<div class=\"control hp\">";
 		        		if(data.loves!=null&&$.inArray(music.mid,data.loves)>-1){
 		        			str+="<a class=\"cicon love\" style=\"background-position:0 -131px\" loveN=\"1\"></a>";
 		        		}else{
 		        			str+="<a class=\"cicon love\" loveN=\"0\"></a>";
 		        		}
-		        		str+="<a href=\"/music/detail?mid="+music.mid+"\" title=\"音乐详情\" class=\"cicon more\" style=\"display: none\" target=\"_blank\"></a>";
-		        		str+="<a class=\"cicon dele\" style=\"display: none\"></a></div></div></li>";
+		        		str+="<a href=\"/music/detail?mid="+music.mid+"\" title=\"音乐详情\" class=\"cicon more\"  target=\"_blank\"></a>";
+		        		str+="<a class=\"cicon dele\" ></a></div></div></li>";
 		        		$(".songUL").append(str);
 		        		if(music.mid==data.nowMid){
 		        			var html="";
@@ -294,7 +294,6 @@ function userLogin(username) {
 					contentType:"application/x-www-form-urlencoded",
 					data: {id:sid,
 						   lid:single,
-						   type:"sing",
 			        },
 					success: function(data){
 						data = JSON.parse(data);
@@ -359,7 +358,6 @@ $(function(){
 			
 		};
 	});
-	
     //下部小红心点击事件	
 	
 	function shuaxin(){
@@ -368,9 +366,8 @@ $(function(){
 	    }
 	}
 	
-	
 	//点击列表中的删除按钮删除歌曲
-	$(".dele").click(function(){
+	$(".songUL").on("click",".dele",function(){
 		var sid=$(this).parent().parent().find(".start em").attr("sonN");
 		var ListId=$(this).parent().parent().find(".start em").text()-1;
 		qikoo.dialog2.confirm('确定要将歌曲从当前列表删除吗？', function(){
@@ -663,6 +660,7 @@ $(function(){
 		$(".songName").html(songName);
 		$(".songPlayer").html(singerName);
 		$(".tc3").attr("href", "/music/detail?mid="+sid);
+		$(".tc3").attr("target", "_blank");
 		/*换右侧图片*/
 		var urlImg = $(this).attr("imgurl");
 		$("#canvas1").attr("src", urlImg);

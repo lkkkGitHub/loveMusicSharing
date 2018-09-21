@@ -381,7 +381,7 @@
 								<c:choose>
 									<c:when test="${user.vip == 0 }">
 										<!-- 充值会员 暂时不做-->
-                                    非会员，赶紧成为我们的<span><a href="">会员</a></span>，享受更多资源
+                                    非会员，赶紧成为我们的<span><a href="">充值</a></span>，享受更多资源
                                     <input type="text" name="vip"
 											value="0" style="display: none">
 									</c:when>

@@ -80,6 +80,7 @@ public class AdminController {
 		jedisClient.hdel("CONTENT", "huadong");
 		jedisClient.hdel("CONTENT", "newsong");
 		jedisClient.hdel("CONTENT", "hot");
+		jedisClient.hdel("CONTENT", "songer");
 		return adminService.updateContent(content);
 	}
 	

@@ -86,10 +86,10 @@
         		success:function(data){
         			var str = "";
         			if(data.length==0){
-        				str+="<div style='margin-left:40%'><img id='tupian' src='../../source/mysong/images/guanzhu.jpg'/></div>";
+        				str+="<div style='margin-left:40%'><img id='tupian' src='../../source/mysong/images/guanzhu.jpg' height='51px' width='52px'/></div>";
         			}
         			for(var i=0;i<data.length;i++){
-        				str+="<div  style='margin-left:20px;float:left'><a href='/User/personalInfo?uid="+data[i].uid+"'><img src='"+data[i].image+"'></a>";
+        				str+="<div  style='margin-left:20px;float:left'><a href='/User/personalInfo?uid="+data[i].uid+"' target=\"new\"><img src='"+data[i].image+"' height='51px' width='52px'></a>";
         				str+="<a >"+data[i].uname+"</a></div>";
         			}
         			
@@ -97,8 +97,6 @@
         		}
         	})
         }
-        
-        
         function queryFans(id){
         	$.ajax({
         		type:'get',
@@ -110,7 +108,7 @@
         				str+="<div style='margin-left:40%'><img   id='tupian' src='../../source/mysong/images/guanzhu.jpg'/></div>";
         			}
         			for(var i=0;i<data.length;i++){
-        				str+="<div  style='margin-left:20px;float:left'><a href='/User/personalInfo?uid="+data[i].uid+"'><img src='"+data[i].image+"'></a>";
+        				str+="<div  style='margin-left:20px;float:left'><a href='/User/personalInfo?uid="+data[i].uid+"' target=\"new\"><img src='"+data[i].image+"' height='51px' width='52px'></a>";
         				str+="<a >"+data[i].uname+"</a></div>";
         			}
         			
@@ -196,7 +194,7 @@ getFansAndAttention('${user.uid	}')">
         <div style="float: left;" class="jiange"></div>
         <div style="float: left; margin-left: 15px; margin-top: 10px;">
             <h3 id="fans">${fans}</h3>
-            <a style="margin-top: 10px;color: white;font-size: 22px"  href="javascript:queryFans('${user.uid }')">粉丝	</a>
+            <a style="margin-top: 10px;color: white;font-size: 22px"  href="javascript:queryFans('${user.uid }')">粉丝</a>
         </div>
     </div>
 </section>
@@ -209,46 +207,7 @@ getFansAndAttention('${user.uid	}')">
 
 <!-- 关注界面 -->
 <div id="guanzhu" style="margin-left: 5% ">
-    <%-- <div id="fudong"
-         style="margin-left: -90px; margin-top: -100px; z-index: 9999; display: none;">
-        <iframe frameborder=0 width=400 height=400 marginheight=0
-                marginwidth=0 scrolling=no src="addfriendiframe.jsp"></iframe>
-    </div>
-    <c:choose>
-        <c:when test="${friendListSize== null or friendListSize==''}">
-            <img id="tupian" src="../../source/mysong/images/guanzhu.jpg"/>
-        </c:when>
-        <c:otherwise>
-            <div class="manyfriend">
-                <c:forEach items="${friendList}" var="friends" varStatus="index">
-                    <div class="friend">
-                        <div id="nameicon" class="center_header3"
-                             style="margin-left: 22px; margin-top: 10px;">
-                            <c:choose>
-                                <c:when test="${friends.imgstr== null or friends.imgstr==''}">
-                                    <a href="getFriendSong.do?user=${friends.friend}"><img
-                                            src="../../source/mysong/images/pic02.jpg" alt="Pic 02"/></a>
-                                </c:when>
-                                <c:otherwise>
-                                    <a href="getFriendSong.do?user=${friends.friend}"><img
-                                            src="${friends.imgstr}" id="img2"/></a>
-                                </c:otherwise>
-                            </c:choose>
-                        </div>
-                        <div style="margin-top: 15px; font-size: 16px;">
-                            <a href="getFriendSong.do?user=${friends.friend}">${friends.friend}</a>
-                        </div>
-                        <div class="header-login4"
-                             style="margin-left: 5px; margin-top: 10px;">
-                            <a class="open-green" id="move"
-                               onclick="move('${friends.friend}')">已关注</a>
-                        </div>
-                    </div>
-                </c:forEach>
-        </c:otherwise>
-    </c:choose>
 
- --%>
 </div>
 
 

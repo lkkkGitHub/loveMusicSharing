@@ -45,5 +45,16 @@
   	FROM `tb_comment` WHERE `mid`=#{mid} ORDER BY `likesum` desc limit 0,10
   </select>
   
+  <select id="findDianZan" resultType="java.lang.Integer">
+  	SELECT COUNT(*) FROM `tb_conmment_like` WHERE `uid`=#{0} AND `cdid`=#{1}
+  </select>
+  
+  <insert id="saveDianzan">
+  	INSERT INTO `tb_conmment_like` (`uid`, `cdid`) VALUES (#{0}, #{1})
+  </insert>
+  
+  <update id="addLikesum">
+  	UPDATE `tb_comment` SET `likesum`=`likesum`+'1' WHERE `cdid`=#{cdid}
+  </update>
   
 </mapper>

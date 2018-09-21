@@ -159,7 +159,7 @@
                 <!--left-->
                 <div class="zp_nrm_l">
 
-                    <img src="${imgstr}" id="img4"/>
+                    <img src="${userInfo.image}" id="img4"/>
 
                     <div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
 
@@ -228,6 +228,7 @@
             <!--提示信息-->
             <div class="main-slider tab-cont">
                 <ul class="mv-list tab-cont">
+                    <!--
                     <c:forEach items="" var="musicLists">
                         <li class="item">
                             <a href="/User/userMusicList?mlid=${musicLists.mlid}"
@@ -242,6 +243,7 @@
                             </div>
                         </li>
                     </c:forEach>
+                    -->
                 </ul>
             </div>
         </div>

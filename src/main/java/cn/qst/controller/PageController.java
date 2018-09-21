@@ -34,48 +34,58 @@ public class PageController {
 
 	@Autowired
 	private MusicClassifyService musicClassifyService;
-	
+
 	@Autowired
 	private JedisClient jedisClient;
 
 	// 主页跳转
 	@RequestMapping("/")
 	public String indexJsp(HttpSession session) {
-		//滑动轮播列表
+		// 滑动轮播列表
 		List<TbMenuContent> queryByName;
-		//新歌模块列表
+		// 新歌模块列表
 		List<TbMenuContent> queryIndexNew;
-		//热歌模块列表
+		// 热歌模块列表
 		List<TbMenuContent> queryIndexHot;
-		//从redis缓存获取数据
-		String jsonName = jedisClient.hget("CONTENT","huadong");
-		//判断数据是否存在
-		if(jsonName!=null && !"".equals(jsonName.trim())) {
+		// 歌手模块
+		List<TbMenuContent> queryIndexSonger;
+		// 从redis缓存获取数据
+		String jsonName = jedisClient.hget("CONTENT", "huadong");
+		// 判断数据是否存在
+		if (jsonName != null && !"".equals(jsonName.trim())) {
 			queryByName = JsonUtils.jsonToList(jsonName, TbMenuContent.class);
-		}else {
+		} else {
 			queryByName = menuService.queryByName();
-			//存入缓存
+			// 存入缓存
 			jedisClient.hset("CONTENT", "huadong", JsonUtils.objectToJson(queryByName));
 		}
-		String jsonNew = jedisClient.hget("CONTENT","newsong");
-		if(jsonNew!=null && !"".equals(jsonNew.trim())) {
+		String jsonNew = jedisClient.hget("CONTENT", "newsong");
+		if (jsonNew != null && !"".equals(jsonNew.trim())) {
 			queryIndexNew = JsonUtils.jsonToList(jsonNew, TbMenuContent.class);
-		}else {
+		} else {
 			queryIndexNew = menuService.queryIndexNew();
-			//存入缓存
+			// 存入缓存
 			jedisClient.hset("CONTENT", "newsong", JsonUtils.objectToJson(queryIndexNew));
 		}
-		String jsonHot = jedisClient.hget("CONTENT","hot");
-		if(jsonHot!=null && !"".equals(jsonHot.trim())) {
+		String jsonHot = jedisClient.hget("CONTENT", "hot");
+		if (jsonHot != null && !"".equals(jsonHot.trim())) {
 			queryIndexHot = JsonUtils.jsonToList(jsonHot, TbMenuContent.class);
-		}else {
+		} else {
 			queryIndexHot = menuService.queryIndexHot();
-			//存入缓存
-			jedisClient.hset("CONTENT", "jsonHot", JsonUtils.objectToJson(queryIndexHot));
+			// 存入缓存
+			jedisClient.hset("CONTENT", "hot", JsonUtils.objectToJson(queryIndexHot));
+		}
+		String jsonSonger = jedisClient.hget("Content", "songer");
+		if (jsonSonger != null && !"".equals(jsonSonger.trim())) {
+			queryIndexSonger = JsonUtils.jsonToList(jsonSonger, TbMenuContent.class);
+		} else {
+			queryIndexSonger = menuService.queryIndexSonger();
+			jedisClient.hset("CONTENT", "songer", JsonUtils.objectToJson(queryIndexHot));
 		}
 		session.setAttribute("huadong", queryByName);
 		session.setAttribute("newsong", queryIndexNew);
 		session.setAttribute("hot", queryIndexHot);
+		session.setAttribute("songer", queryIndexSonger);
 		return "index";
 	}
 
@@ -106,7 +116,7 @@ public class PageController {
 	 */
 	@ResponseBody
 	@RequestMapping("/admin/queryMenuAll")
-	public List<Object> queryMenuAll(Integer menuid,Map<String, Object> map) {
+	public List<Object> queryMenuAll(Integer menuid, Map<String, Object> map) {
 		System.out.println(menuid);
 		List<TbMenu> tbMenus = menuService.queryAll();
 		List<TbMenu> mPList = new ArrayList<>();
@@ -117,29 +127,29 @@ public class PageController {
 			}
 		}
 		List<Object> list = new ArrayList<>();
-		TbMenu tbMenu  = menuService.query(menuid);
+		TbMenu tbMenu = menuService.query(menuid);
 		List<TbMenu> mCList = new ArrayList<>();
 		// 取得父菜单的id和判断是否需要直接跳转到首个子菜单id
 		Integer parent = 0;
-		//取得个单独页面的菜单选项
-		List<TbMenu> mClsit1 = new ArrayList<>();	
+		// 取得个单独页面的菜单选项
+		List<TbMenu> mClsit1 = new ArrayList<>();
 		Integer child = 0;
 		String name;
 		// 判断传回的值的菜单属性是否是父菜单
 		if (tbMenu.getIsparent()) {
 			parent = tbMenu.getMid();
-			mCList = menuService.queryByParent(tbMenu.getMid());	
-				//判断其子类是否是一级父类不是就获取该类的父类。进行显示
-				if (tbMenu.getParentmid() != 12) {
-					parent = tbMenu.getParentmid();
-					child = tbMenu.getMid();
-					name = tbMenu.getEname();
-					mCList = menuService.queryByParent(parent);
-					mClsit1 = menuService.queryByParent(tbMenu.getMid());
-				} else {
-					child = mCList.get(0).getMid();
-					name = mCList.get(0).getEname();
-				}
+			mCList = menuService.queryByParent(tbMenu.getMid());
+			// 判断其子类是否是一级父类不是就获取该类的父类。进行显示
+			if (tbMenu.getParentmid() != 12) {
+				parent = tbMenu.getParentmid();
+				child = tbMenu.getMid();
+				name = tbMenu.getEname();
+				mCList = menuService.queryByParent(parent);
+				mClsit1 = menuService.queryByParent(tbMenu.getMid());
+			} else {
+				child = mCList.get(0).getMid();
+				name = mCList.get(0).getEname();
+			}
 		} else {
 			parent = tbMenu.getParentmid();
 			mCList = menuService.queryByParent(parent);
@@ -151,10 +161,10 @@ public class PageController {
 		list.add(name);
 		mPList.addAll(mCList);
 		list.add(mPList);
-		if(mClsit1.size()!=0) {
+		if (mClsit1.size() != 0) {
 			list.add(mClsit1);
 		}
-	
+
 		return list;
 	}
 
@@ -179,5 +189,5 @@ public class PageController {
 			}
 		}
 		return list;
-	}	
+	}
 }

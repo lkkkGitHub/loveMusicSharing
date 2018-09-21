@@ -77,10 +77,10 @@ var menuid=${menuid}
          <div id="nameicon" class="center_header" style="margin-left:60px;margin-right:10px;float:left;display:none">
          <c:choose>
         <c:when test="${imgstr== null or imgstr==''}">
-            <a href="userInfo.do"><img src="../../source/images/user.png" id="img1"/></a>
+            <a href="/personal"><img src="../../source/images/user.png" id="img1"/></a>
         </c:when>
         <c:otherwise>
-        <a href="userInfo.do"><img src="${imgstr}" id="img2"/></a>
+        <a href="/personal"><img src="${imgstr}" id="img2"/></a>
         </c:otherwise>
         </c:choose>
          </div>
@@ -109,10 +109,11 @@ var menuid=${menuid}
 			<div class="main-top screen-hd clearfix">
 				<!-- start 上方左边模块 -->
 				<div class="main" style="margin-top:50px;">
-					<!-- <div id="adMainTopLeft"></div-->
 					
 					<div class='ranklist-wrapper clearfix'
 						style="margin: 0 auto; width: 920px;" id="ranktop" >
+						
+						
 					</div>
 				</div>
 				<!-- end 上方右边模块 -->

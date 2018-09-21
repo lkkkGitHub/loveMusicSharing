@@ -25,7 +25,7 @@ function searchStr(str1) {
 				for ( var item in data["songer"]) {
 					if(parseInt(item)<3){
 						str += "<a href='/searchBySname?sname="+encodeURI(encodeURI(data["songer"][item]))
-						+ "' target='_new' class='result-item'>";
+						+ "'  class='result-item'>";
 				str += "<span class='rank'>" + (parseInt(item) + 1)
 						+ "</span><span class='title'>" + data["songer"][item]
 						+ "</span>";
@@ -39,7 +39,7 @@ function searchStr(str1) {
 				for ( var item in data["song"]) {
 					if(parseInt(item)<6){
 						str += "<a  class='result-item' href='play?id="
-							+ data["song"][item].musicid + "' target='_new'>";
+							+ data["song"][item].musicid + "' >";
 					str += "<span class='rank'>" + (parseInt(item) + 1)
 							+ "</span>";
 					str += "<span class='title'>" + data["song"][item].title

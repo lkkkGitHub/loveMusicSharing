@@ -96,4 +96,21 @@ public class MenuServiceImpl implements MenuService {
 		List<TbMenuContent> selectByExample = meunContentMapper.selectByExample(tbMenuContentExample);
 		return selectByExample;	
 	}
+
+
+
+	@Override
+	public List<TbMenuContent> queryIndexSonger() {
+		// TODO Auto-generated method stub
+		TbMenuExample example = new TbMenuExample();
+		Criteria criteria2 = example.createCriteria();
+		criteria2.andMnameEqualTo("歌手榜");
+		List<TbMenu> selectByExample2 = menuMapper.selectByExample(example);
+		Integer mid = selectByExample2.get(0).getMid();
+		TbMenuContentExample tbMenuContentExample = new TbMenuContentExample();
+		cn.qst.pojo.TbMenuContentExample.Criteria criteria = tbMenuContentExample.createCriteria();
+		criteria.andMidEqualTo(mid);
+		List<TbMenuContent> selectByExample = meunContentMapper.selectByExample(tbMenuContentExample);
+		return selectByExample;
+	}
 }

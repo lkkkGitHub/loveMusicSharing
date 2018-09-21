@@ -101,6 +101,7 @@ var TT = TAOTAO = {
         			editor.plugin.multiImageDialog({
 						clickFn : function(urlList) {
 							var imgArray = [];
+							
 							KindEditor.each(urlList, function(i, data) {
 								imgArray.push(data.url);
 								form.find(".pics ul").append("<li><a href='"+data.url+"' target='_blank'><img src='"+data.url+"' width='80' height='50' /></a></li>");

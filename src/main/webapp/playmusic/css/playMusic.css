@@ -88,28 +88,28 @@
 }
 
 
-.logoaichang{  //logo鐐瑰嚮鍙樿壊
+.logoaichang{  //logo閻愮懓鍤崣妯垮
 font-size: 28px;
 color:white;
 margin-top:10px;
 margin-left:20px;
 width:120px;
 }
-.modesuiji{   //鎸夐挳鎻愮ず闅忔満鎾斁
+.modesuiji{   //閹稿鎸抽幓鎰仛闂呭繑婧�閹绢厽鏂�
 	color:#fff;
 	margin-left:185px;
     margin-top:5px;
 	font-size:13px;
 	display:none;
 	}
-.modeshunxv{  //鎸夐挳鎻愮ず椤哄簭鎾斁
+.modeshunxv{  //閹稿鎸抽幓鎰仛妞ゅ搫绨幘顓熸杹
 	color:#fff;
 	margin-left:185px;
     margin-top:5px;
 	font-size:13px;
 	display:none;
 	}
-.modedanqu{  //鎸夐挳鎻愮ず鍗曟洸鎾斁
+.modedanqu{  //閹稿鎸抽幓鎰仛閸楁洘娲搁幘顓熸杹
 	color:#fff;
 	margin-left:185px;
     margin-top:5px;
@@ -145,14 +145,14 @@ li{list-style: none;}
 html { overflow-y: hidden;overflow-x:hidden;}
 a{text-decoration: none; cursor:pointer;}
 .clear:after{content: '.';clear: both;display: block;height: 0;visibility: hidden;font-size: 0;line-height: 0;}
-/*涓讳綋缁撴瀯*/
+/*娑撹缍嬬紒鎾寸��*/
 .blur{width:100%;height: 100%;position: fixed;overflow: hidden;top: 0;bottom: 0;left: 0;right: 0;z-index: 0;}
 .playerMain{width: 100%;height: 100%;min-height: 500px;min-width: 930px;transition:all 0.2s;}
 .top{position: absolute;top: 0;width: 100%;height: 56px;background-color:#121213;}
 
 .middle{position: absolute;top: 56px;bottom: 80px;background-color:#fff; width: 100%;}
 .mainWrap{position: relative;padding:0 310px 0 240px;height: 100%;}
-/*澶撮儴*/
+/*婢舵挳鍎�*/
 .logo{width: 162px;height: 56px;float: left;margin-left: 16px;display: block;background:url("../css/images/T15QU5FXXmXXcUet2f-162-34.png") no-repeat 0 50%;}
 .search{position: absolute;top: 13px;left: 240px;width: 230px;height: 30px;background: url("../css/images/search.png") no-repeat 0 0;}
 .searchBtn{float: left;width: 18px;height: 28px;padding: 1px 6px;background: url("../css/images/sbtn.png") no-repeat 10 50%;cursor: pointer;}
@@ -185,10 +185,10 @@ a{text-decoration: none; cursor:pointer;}
 .colA{float: right;width: 18px;height: 18px;background:url("../css/images/T1bMh.FxNXXXb_r3IF-72-730.png") 0 -412px;margin: 5px 0;}
 .cellectList{width: 185px;height: 89px;margin: 0 2.5px;background-image: url("../css/images/T11aF_Fx4aXXcxTH6l-185-89.png");}
 
-/*鎾彂鍒楄〃*/
+/*閹绢厼褰傞崚妤勩��*/
 .mainBody{height: 100%;}
 
-/*涓撹緫淇℃伅*/
+/*娑撴捁绶穱鈩冧紖*/
 .mainOuther{position: absolute;top: 0;right: 0;width: 250px;padding-right: 20px;height: 100%;}
 .mainOuther2{margin:0 auto;position:static;}
 .albumCover{width: 250px;height: 185px;padding-top: 20px;text-align: center;}
@@ -213,11 +213,11 @@ a{text-decoration: none; cursor:pointer;}
 .cicon{cursor: pointer; display: block;width: 18px;height: 18px;position: absolute;top:11px;background:url("../css/images/T1bMh.FxNXXXb_r3IF-72-730.png") no-repeat;}
 .love{background-position: -28px -130px;right: 86px;}
 .love:hover{background-position: 0 -155px;}
-.more{background-position: 0 -473px;right: 53px;display: none;}
+.more{background-position: 0 -473px;right: 53px;}
 .more:hover{background-position: -28px -473px;}
-.dele{background-position: 0 -491px;right: 20px;display: none;}
+.dele{background-position: 0 -491px;right: 20px;}
 .dele:hover{background-position: -28px -491px;}
-.dele2{background-position: 0 -491px;right: 20px;display: none; }
+.dele2{background-position: 0 -491px;right: 20px;}
 .dele2:hover{background-position: -28px -491px;}
 .playFt{width: 816px;height: 45px;padding-top: 14px;border-top: 1px solid #ccc;position: absolute;bottom:0;}
 .track{height: 30px;width: 100%;line-height: 30px;position: relative;padding-left: 38px;}
@@ -232,7 +232,7 @@ a{text-decoration: none; cursor:pointer;}
 .itJin:hover{background-position: -225px -30px;}
 .itMore{width: 73px;height: 30px;background-image:url("../css/images/T1Z8x_FEBXXXcvwvwe-420-106.png");text-indent: 38px;background-position: -348px 0;}
 .itMore:hover{background-position: -348px -30px;}
-/*搴曢儴鎸夐敭*/
+/*鎼存洟鍎撮幐澶愭暛*/
 .bottom{position: absolute;left: 0;bottom: 0;width: 100%;height: 80px;background:url("../css/images/T10MNqFzVXXXcu5FDa-20-20.png") repeat;}
 .playerWrap{position: relative;height: 100%;padding-left: 278px;padding-right: 330px;}
 .playerCon{position: absolute;top: 0;left: 0;width: 278px;height: 100%;}
@@ -266,18 +266,18 @@ a{text-decoration: none; cursor:pointer;}
 .volSpeaker{position: absolute;width: 18px;height: 18px;background: url("../css/images/T1bMh.FxNXXXb_r3IF-72-730.png") no-repeat 0 -295px; cursor:pointer;}
 .volControl{position: absolute;left:24px;width: 80px;height: 18px;background: url("../css/images/pro.png") repeat-x 0 50%;}
 
-/*姝屾洸鍒楄〃鏁堟灉*/
+/*濮濆本娲搁崚妤勩�冮弫鍫熺亯*/
 .songList:hover .start em{cursor: pointer;display: block;width: 18px;height: 18px;margin: 11px 9px;background: url("../css/images/play.png") 0 0;line-height: 18px;color:transparent;}
 .songList:hover{background-color: #f5f5f5;}
 .start em:hover{background-position:-16px 0 ;}
 
-/*姝屾洸婕父*/
+/*濮濆本娲稿顐ｇ埗*/
 .manyou{width: 749px;height: 41px;padding: 0 36px 0 31px;position: relative;}
 .songLMain{width: 100%;height: 40px;line-height: 41px;}
 .manyouA{position: absolute;display: block;width: 88px;height: 30px;padding-left: 30px;left: 72px;top: 0;font-size: 12px;line-height: 30px;color: #fff;background: url("../css/images/manyou.png");}
 
-/*fadein鍔ㄧ敾*/
-@-webkit-keyframes fadeIn/* Safari 鍜� Chrome */
+/*fadein閸斻劎鏁�*/
+@-webkit-keyframes fadeIn/* Safari 閸滐拷 Chrome */
 {
 0%   {opacity: 0;}
 10%	 {opacity: 0.1}
@@ -339,7 +339,7 @@ a{text-decoration: none; cursor:pointer;}
 100% {opacity: 1;}
 }
 
-@-webkit-keyframes myfirst /* Safari 鍜� Chrome */
+@-webkit-keyframes myfirst /* Safari 閸滐拷 Chrome */
 {
 0%   {opacity: 0;}
 10%	 {opacity: 0.1}
@@ -377,5 +377,5 @@ a{text-decoration: none; cursor:pointer;}
 animation: .7s ease 0.1s normal both 1 fadeIn;
 }
 
-/*姝岃瘝閮ㄥ垎*/
+/*濮濆矁鐦濋柈銊ュ瀻*/
 #lyr{width: 250px;height:140px;margin:0 20px 0 0;line-height:25px; font-size:12px;text-align:center;padding-top: 60px;font-family: 'Helvetica Neue', 'Hiragino Sans GB', 'Microsoft Yahei', Helvetica, Arial, sans-serif;color: #333;overflow: hidden;}

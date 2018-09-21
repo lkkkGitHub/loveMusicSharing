@@ -199,15 +199,15 @@
 
             <div id="nameicon" class="center_header"
                  style="margin-left: 60px; margin-right: 10px; float: left; display: none">
-                <a href="User/personalInfo"><img src="${imgstr}" id="img2" /></a>
+                <a href="/personal"><img src="${imgstr}" id="img2" /></a>
             </div>
             <div id="name" style="display: none; padding-top: 35px;">
-                <a href="User/personalInfo" style="cursor: pointer"><i
+                <a href="/personal" style="cursor: pointer"><i
                         onmouseover="xianshi()" onmouseout="xiaoshi2()">${username}</i></a>
             </div>
             <div id="xianshi">
                 <p style="margin-left: 5px; margin-top: 3px;">
-                    <a href="User/personalInfo"><img src="/images/person.png"></a>
+                    <a href="User/personal"><img src="/images/person.png"></a>
                 </p>
                 <p style="margin-left: 4px; margin-top: 5px;">
                     <a href="User/exit"><img src="/images/exit.png"></a>

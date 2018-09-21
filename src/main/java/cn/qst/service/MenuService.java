@@ -48,4 +48,9 @@ public interface MenuService {
 	 * @return
 	 */
 	public List<TbMenuContent> queryIndexHot();
+	
+	/**
+	 * 查询歌手排行
+	 */
+	public List<TbMenuContent> queryIndexSonger();
 }

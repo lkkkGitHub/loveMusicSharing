@@ -48,11 +48,11 @@ var type = '${type}';
 					<div class="mainNav">
 						<div id="nameicon" class="center_header"
 							style="margin-left: 60px; margin-right: 10px; float: left;">
-							<a href="User/personalInfo" target="_blank"><img
+							<a href="/personal" target="_blank"><img
 								src="${imgstr}" id="img2" /></a>
 						</div>
 						<div id="name" style="padding-top: 21px;">
-							<a href="User/personal" style="cursor: pointer; color: #fff"
+							<a href="/personal" style="cursor: pointer; color: #fff"
 								target="_blank">${username}</a>
 						</div>
 					</div>
@@ -125,17 +125,17 @@ var type = '${type}';
 											<%-- <div class="col">${music.special}</div> --%>
 											<div class="col">待添加</div>
 										</div>
-										<div class="control" hp="123">
+										<div class="control hp">
 										    <c:choose>
 	                                            <c:when test="${love!=null && love.contains(music.mid)}">
-	                                            	<a class="cicon love" style="background-position:0 -131px" loveN="1"></a> 
+	                                            	<a class="cicon love" style="background-position:0 -131px; loveN="1" ></a> 
 	                                            </c:when>
 	                                            <c:otherwise>
-	                                            	<a class="cicon love" loveN="0"></a> 
+	                                            	<a class="cicon love" loveN="0" ></a> 
 	                                            </c:otherwise>
                                             </c:choose>
-											<a href="/music/detail?mid=${music.mid}" title="音乐详情" class="cicon more" style="display: none" target="_blank"></a>
-											<a class="cicon dele" style="display: none"></a>
+											<a href="/music/detail?mid=${music.mid}" title="音乐详情" class="cicon more"  target="_blank"></a>
+											<a class="cicon dele"></a>
 										</div>
 									</div>
 								</li>

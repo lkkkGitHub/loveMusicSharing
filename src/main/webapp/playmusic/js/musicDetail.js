@@ -1,10 +1,29 @@
+
+//增加下载
+
+function musicdown(musicurl){
+	$.ajax({
+		url:"/file/downlowd",
+		type:"get",
+		dataType:'json',
+		data:{musicurl:musicurl},
+		success:function(data){
+			if(data==200){
+				alert("下载成功,请在桌面查看");
+			}else{
+				alert("下载失败");
+			}
+		}
+	})
+}
+
 // 添加评论
 function submit1() {
 	var context = $("#content").val();
 	if( context == null || context.trim()=='') return ;
 	send(context, null);
 	$("#content").val('');
-};
+}
 
 function send(context, rid) {
 	if( loginId == null || loginId=='' ) {
@@ -26,6 +45,7 @@ function send(context, rid) {
         success: function(json, textStatus){//如果调用servlet成功，响应200。请求成功后回调函数。这个方法有两个参数：服务器返回数据，返回状态(可以缺省)。
 			alert(json);
 			var pageIndex = $(".js-selected").text();
+			if( pageIndex == null ) pageIndex = 0;
 			goPage(pageIndex);
 		},
 		error:function (XMLHttpRequest, textStatus, errorThrown) {//如果调用servlet出现问题，响应非200（这里响应405）。通常情况下textStatus和errorThown只有其中一个有值 。(默认: 自动判断 (xml 或 html)) 请求失败时将调用此方法。这个方法有三个参数：XMLHttpRequest 对象，错误信息，（可能）捕获的错误对象。
@@ -54,7 +74,7 @@ function deleteComment(mid) {
 	         alert("删除出错！");
 	    }
 	});
-};
+}
 
 // 异步分页请求
 function goPage(index) {
@@ -84,9 +104,7 @@ function goPage(index) {
         		zxplStr += ite.user.uname+'</a>：'+ite.content+'</div></div><div class="rp">';
         		zxplStr += '<div class="time s-fc4">'+dateFtt(new Date(ite.cdate), "yyyy-MM-dd")+'</div>';
         		// 等待修改
-        		zxplStr += '<a href="javascript:void(0)"><i class="zan u-icn2 u-icn2-12"></i> ('+ite.likesum+')';
-        		
-       
+        		zxplStr += '<a onclick="dianzan('+ite.cdid+')"><i class="zan u-icn2 u-icn2-12"></i> ('+ite.likesum+')';
         		zxplStr += '</a><span class="sep">|</span><a class="s-fc3" onclick="showReplay(\'zxpl'+ind+'\')">回复</a>';
         		if( loginId!=null && loginId==ite.user.uid ) {
         			zxplStr += '<span class="sep">|</span><a class="s-fc3" onclick="deleteComment('+ite.cdid+')">删除</a>';
@@ -168,4 +186,62 @@ function replay(obj, txtid) {
 	var content = $(txtid).val();
 	if( content == null || content.trim()=='') return ;
 	send(content, rid);
+}
+
+
+function dianzan(cid) {
+	if( loginId == null || loginId=='' ) {
+		alert("请先登录..");
+		return ;
+	}
+	$.ajax({
+		url : "/music/comment/dianzan", 
+		type: "post", 
+		async:false,//(默认: true) 默认设置下，所有请求均为异步请求。如果需要发送同步请求，请将此选项设置为 false。注意，同步请求将锁住浏览器，用户其它操作必须等待请求完成才可以执行。
+		contentType:"application/x-www-form-urlencoded",
+		data: {
+			uid:loginId,
+			cdid:cid,
+        },
+        dataType:'json',
+        success: function(json, textStatus){//如果调用servlet成功，响应200。请求成功后回调函数。这个方法有两个参数：服务器返回数据，返回状态(可以缺省)。
+        	alert(json);
+        	var pageIndex = $(".js-selected").text();
+			goPage(pageIndex);
+		},
+		error:function (XMLHttpRequest, textStatus, errorThrown) {//如果调用servlet出现问题，响应非200（这里响应405）。通常情况下textStatus和errorThown只有其中一个有值 。(默认: 自动判断 (xml 或 html)) 请求失败时将调用此方法。这个方法有三个参数：XMLHttpRequest 对象，错误信息，（可能）捕获的错误对象。
+	         alert("点赞出错！");
+	    }
+	});
+}
+
+function showList() {
+	if( loginId == null || loginId=='' ) {
+		alert("请先登录..");
+		return ;
+	}
+	$(".songSingleChoose").toggle();
+}
+
+function addList(obj) {
+	if( loginId == null || loginId=='' ) {
+		alert("请先登录..");
+		return ;
+	}
+	var mlid = $(obj).attr("single");
+	$.ajax({
+		url : "/addList", 
+		type: "post", 
+		async:false,//(默认: true) 默认设置下，所有请求均为异步请求。如果需要发送同步请求，请将此选项设置为 false。注意，同步请求将锁住浏览器，用户其它操作必须等待请求完成才可以执行。
+		contentType:"application/x-www-form-urlencoded",
+		data: {
+			id:musicId,
+			lid:mlid,
+        },
+		success: function(data){
+			data = JSON.parse(data);
+			alert(data);
+			showList();
+		}
+	});
 }

@@ -3,6 +3,8 @@ package cn.qst.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -16,8 +18,11 @@ import cn.qst.comman.pojo.EasyUiDataGridResult;
 import cn.qst.comman.utils.DownloadLyric;
 import cn.qst.pojo.TbComment;
 import cn.qst.pojo.TbMusic;
+import cn.qst.pojo.TbMusiclist;
+import cn.qst.pojo.TbUser;
 import cn.qst.service.CommentService;
 import cn.qst.service.MusicService;
+import cn.qst.service.MusiclistService;
 
 @Controller
 public class MusicController {
@@ -26,6 +31,8 @@ public class MusicController {
 	private MusicService musicService;
 	@Autowired
 	private CommentService commentService;
+	@Autowired
+	private MusiclistService musiclistService;
 	
 	//上传文件urlip地址
 	@Value("${IMAGE_SERVER_URL}")
@@ -33,7 +40,7 @@ public class MusicController {
 	
 	// 跳转到音乐详情（需要获取音乐的精彩评论和所有评论）
 	@RequestMapping("/music/detail")
-	public String musicDetailPage(ModelMap map,String mid) {
+	public String musicDetailPage(ModelMap map,String mid, HttpSession session) {
 		if( mid == null ) {
 			return "500";
 		}
@@ -73,6 +80,11 @@ public class MusicController {
 		// 查询保存总页数
 		int page = countAll/10+(countAll%10==0?0:1);
 		map.addAttribute("page", page);
+		// 保存用户的歌单
+		TbUser user = (TbUser) session.getAttribute("user");
+		List<TbMusiclist> list = null;
+		if( user != null ) list = musiclistService.selectByUid(user.getUid());
+		map.addAttribute("mylist", list);
 		return "musicdetail";
 	}
 	

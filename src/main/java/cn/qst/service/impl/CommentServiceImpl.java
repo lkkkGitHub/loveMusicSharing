@@ -58,4 +58,19 @@ public class CommentServiceImpl implements CommentService {
 		return commentDao.countAllByMid(mid);
 	}
 
+	@Override
+	public int findDianZan(String uid, int cid) {
+		return commentDao.findDianZan(uid, cid);
+	}
+
+	@Override
+	public int dianzan(String uid, int cid) {
+		return commentDao.saveDianzan(uid, cid);
+	}
+
+	@Override
+	public boolean updateLikesum(int cid) {
+		return commentDao.addLikesum(cid)==1;
+	}
+
 }

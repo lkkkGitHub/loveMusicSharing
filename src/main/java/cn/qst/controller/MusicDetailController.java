@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.pagehelper.PageInfo;
@@ -20,13 +21,14 @@ import cn.qst.service.CommentService;
  * @Description 音乐评论相关
  */
 @Controller
+@RequestMapping(value="/music")
 public class MusicDetailController {
 	
 	@Autowired
 	private CommentService commentService;
 	
 	// 根据音乐id获取评论(分页，待添加)
-	@RequestMapping(value="/music/commentPage", method= {RequestMethod.POST})
+	@RequestMapping(value="/commentPage", method= {RequestMethod.POST})
 	@ResponseBody
 	public PageInfo<TbComment> commentGet(Integer mid, Integer pageIndex) {
 		PageInfo<TbComment> pageInfo = commentService.selectByPage(pageIndex, 10, mid);
@@ -34,7 +36,7 @@ public class MusicDetailController {
 	}
 	
 	// 添加评论
-	@RequestMapping(value="/music/comment", method= {RequestMethod.POST})
+	@RequestMapping(value="/comment", method= {RequestMethod.POST})
 	@ResponseBody
 	public String addComment(String uid, String mid, String cid, String content) {
 		// 获取评论用户
@@ -53,7 +55,7 @@ public class MusicDetailController {
 	}
 	
 	// 删除评论
-	@RequestMapping(value="/music/comment/delete", method= {RequestMethod.POST})
+	@RequestMapping(value="/comment/delete", method= {RequestMethod.POST})
 	@ResponseBody
 	public String deleteComment(String cdid) {
 		if( cdid == null || "".equals(cdid) ) {
@@ -62,6 +64,27 @@ public class MusicDetailController {
 		int id = Integer.parseInt(cdid);
 		if( commentService.deleteComment(id) ) return JsonUtils.objectToJson("成功");
 		else return JsonUtils.objectToJson("删除失败");
+	}
+	
+	// 点赞
+	@RequestMapping("/comment/dianzan")
+	@ResponseBody
+	public String dianzan(String uid, String cdid) {
+		boolean flag = true;
+		if( cdid == null || "".equals(cdid) ) {
+			flag = false;
+		}
+		int cid = Integer.parseInt(cdid);
+		if( commentService.findDianZan(uid, cid) != 0 ) {
+			flag = false;
+		} else {
+			// 添加到点赞表
+			commentService.dianzan(uid, cid);
+			// 点赞数目加1
+			commentService.updateLikesum(cid);
+		}
+		if( flag ) return JsonUtils.objectToJson("点赞成功");
+		else return JsonUtils.objectToJson("你已经点过赞了~~");
 	}
 	
 }

@@ -22,5 +22,11 @@ public interface CommentService {
 	PageInfo<TbComment> selectByPage(Integer pageIndex, Integer rows, Integer mid);
 
 	int countTotal(int mid);
+
+	int findDianZan(String uid, int cid);
+
+	int dianzan(String uid, int cid);
+
+	boolean updateLikesum(int cid);
 	
 }

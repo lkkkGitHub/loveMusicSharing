@@ -144,29 +144,29 @@ var str = "";
 			</ul>
 			</nav>
 
-			<div class="header-search" style="margin-left: -20px;">
-				<form action="/seacher" method="post" id="searchform"
-					onsubmit="return searchNull()">
+		<div class="header-search" style="margin-left: -20px;">
+				<form action="/seacher" method="post" id="searchform" onsubmit="return searchNull()">
 					<input style="width: 170px;" type="text" class="text"
 						placeholder="我是歌手第四季" name="musicName" id="musicName" speech
-	x-webkit-speech onkeyup="searchStr(this.value)" /> <span
-						class="btn" id="vid" style="float: left;"><i><img
-							style="margin-top: 6px;" src="../../source/images/video.png"></i></span>
-					<span class="btn" onclick="search();"><i class="icon-sprite"></i></span>
-
+						x-webkit-speech onkeyup="searchStr(this.value)"/> <span class="btn" id="vid"
+						style="float: left;"><i><img style="margin-top: 6px;"
+							src="/source/images/video.png"></i></span> <span class="btn"
+						onclick="search();"><i class="icon-sprite"></i></span>
 				</form>
 				<div class="videoFrame">
 					<iframe frameborder=0 width=290 height=330 marginheight=0
 						marginwidth=0 scrolling=no src="video.jsp"></iframe>
 				</div>
 				<div class="result" id="searchBox">
-					<c:forEach items="${hot}" var="hot_song" varStatus="stat">
-						<c:if test="${stat.count<=6 }">
-							<a class="result-item" href="play?id=${hot_song.musicid}"
-								target='_new'> <span class="rank">${stat.count }</span> <span
-								class="title">${hot_song.title}</span> <span class="num">${hot_song.playsum }万</span></a>
-						</c:if>
-					</c:forEach>
+				<c:forEach items="${hot}" var="hot_song" varStatus="stat">
+				<c:if test="${stat.count<=6 }">
+				<a  class="result-item" href="play?id=${hot_song.musicid}" target='_new'>
+				<span class="rank">${stat.count }</span>
+				<span class="title">${hot_song.title}</span> <span class="num">${hot_song.playsum }万</span></a>
+				</c:if>
+				</c:forEach>
+				</div>
+			</div>
 
 					<div id="nameicon" class="center_header"
 						style="margin-left: 60px; margin-right: 10px; float: left; display: none">
@@ -184,13 +184,14 @@ var str = "";
 							<a href="User/exit"><img src="/images/exit.png"></a>
 						</p>
 					</div>
+					
 					<div class="header-login" style="margin-right: -10px;">
 						<a href="/login" class="open-green" id="login">登录</a> <a
 							href="/regist" class="open-vip" id="reg">注册</a>
 					</div>
 
 				</div>
-			</div>
+			
 	</header>
 
 	<!-- 精彩推荐 -->

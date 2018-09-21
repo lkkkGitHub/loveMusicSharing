@@ -323,7 +323,7 @@ public class PlayMusicCotroller {
 			musiclist.setUid(user.getUid());
 			musiclist.setCreatedate(new Date());
 			// 设置默认图片
-			musiclist.setImage("1");
+			musiclist.setImage("/images/musicLIst.jpg");
 			
 			// 保存歌单实体对象
 			boolean flag = musiclistService.save(musiclist);

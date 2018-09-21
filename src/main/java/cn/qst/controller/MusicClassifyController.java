@@ -1,6 +1,9 @@
 package cn.qst.controller;
 
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,9 +58,16 @@ public class MusicClassifyController {
 	 */
 	@ResponseBody
 	@RequestMapping("/musicClassify/rank")
-	public List<TbMenuContent> queryRank(Integer mid,Integer menuid){
-		List<TbMenuContent> queryRank = musicClassifyService.queryRank(mid);
-		return queryRank;
+	public List<TbMenuContent> queryRank(Integer mid,String type,HttpServletRequest request){
+		if(type.equals("hot")) {
+			return (List<TbMenuContent>)request.getSession().getAttribute("hot");
+		}else if(type.equals("newsong")) {
+			return (List<TbMenuContent>)request.getSession().getAttribute("newsong");
+		}else if(type.equals("songer")){
+			return (List<TbMenuContent>)request.getSession().getAttribute("songer");	
+		}else {
+			List<TbMenuContent> queryRank = musicClassifyService.queryRank(mid);
+			return queryRank;	
+		}
 	}
-	
 }
